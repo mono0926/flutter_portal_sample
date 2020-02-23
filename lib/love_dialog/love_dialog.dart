@@ -31,7 +31,7 @@ class LoveDialog extends StatelessWidget {
     return FadeTransition(
       opacity: model.fadeAnimation,
       child: ScaleTransition(
-        scale: model.sizedAnimation,
+        scale: model.scaleAnimation,
         child: const _Dialog(),
       ),
     );

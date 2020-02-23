@@ -22,10 +22,10 @@ class LoveDialogAnimationManager extends Disposable {
   final VoidCallback onFinish;
   final AnimationController _animationController;
 
-  Animation<double> _sizedAnimation;
+  Animation<double> _scaleAnimation;
   Animation<double> _fadeAnimation;
 
-  Animation<double> get sizedAnimation => _sizedAnimation;
+  Animation<double> get scaleAnimation => _scaleAnimation;
   Animation<double> get fadeAnimation => _fadeAnimation;
 
   void _initialize() {
@@ -34,7 +34,7 @@ class LoveDialogAnimationManager extends Disposable {
       curve: Curves.linear,
     );
 
-    _sizedAnimation = CurvedAnimation(
+    _scaleAnimation = CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeOutQuad,
     ).drive(Tween<double>(begin: 0.8, end: 1));
@@ -45,7 +45,7 @@ class LoveDialogAnimationManager extends Disposable {
       parent: _animationController,
       curve: Curves.easeOutCubic,
     );
-    _sizedAnimation = CurvedAnimation(
+    _scaleAnimation = CurvedAnimation(
       parent: _animationController,
       curve: Curves.linear,
     ).drive(Tween<double>(begin: 0.8, end: 1));
