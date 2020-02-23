@@ -1,0 +1,23 @@
+name: apple_music_dialog
+description: A new Flutter application.
+version: 1.0.0+1
+environment:
+  sdk: ">=2.8.0-dev <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  flutter_portal: ^0.0.1+2
+  provider:
+  vsync_provider:
+  disposable_provider:
+  dot_of: any
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+dependency_overrides:
+  provider: 4.1.0-dev
+flutter:
+  uses-material-design: true
+  assets:
+  - images/Image-1.jpg
