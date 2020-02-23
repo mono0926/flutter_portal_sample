@@ -1,68 +1,48 @@
 import 'package:dot_of/dot_of.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_portal/flutter_portal.dart';
+import 'package:provider/provider.dart';
 
-import 'love_dialog/love_dialog.dart';
+import 'app.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  bool visible = false;
-
   @override
   Widget build(BuildContext context) {
-    return PortalEntry(
-      visible: visible,
-      portal: LoveDialog.wrapped(
-        onFinish: () {
-          setState(() {
-            visible = !visible;
-          });
-        },
-      ),
-      child: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            /// haribote
-            Image.asset('images/Image-1.jpg'),
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          /// haribote
+          Image.asset('images/Image-1.jpg'),
 
-            Column(
-              children: <Widget>[
-                Expanded(
-                  child: Row(
-                    children: <Widget>[
-                      _ButtonSection(
-                        label: 'pop',
-                        onTap: () => context.navigator.maybePop(),
-                      ),
-                      _ButtonSection(
-                        label: 'push',
-                        onTap: () => context.navigator.push(
-                          MaterialPageRoute(
-                            builder: (_context) => MyHomePage(),
-                          ),
+          Column(
+            children: <Widget>[
+              Expanded(
+                child: Row(
+                  children: <Widget>[
+                    _ButtonSection(
+                      label: 'pop',
+                      onTap: () => context.navigator.maybePop(),
+                    ),
+                    _ButtonSection(
+                      label: 'push',
+                      onTap: () => context.navigator.push(
+                        MaterialPageRoute(
+                          builder: (_context) => MyHomePage(),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                _ButtonSection(
-                  label: 'pop up',
-                  onTap: () => setState(() {
-                    visible = !visible;
-                  }),
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+              _ButtonSection(
+                label: 'pop up',
+                onTap: context.read<LoveDialogVisibilityNotifier>().toggle,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

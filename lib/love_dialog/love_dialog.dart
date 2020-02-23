@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vsync_provider/vsync_provider.dart';
 
+import '../app.dart';
 import 'love_dialog_animation_manager.dart';
 
 class LoveDialog extends StatelessWidget {
